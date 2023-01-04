@@ -1,30 +1,34 @@
-import { Card, Typography } from "antd";
-const { Title } = Typography;
+import { Col, Row } from "antd";
+import NewStoryItem from "../newStory_Item";
+import Refresh from "../refresh";
 export default function NewStoryUI(props) {
+	const { reloadDataList, listNews, spinRefresh } = props;
 	return (
-		<div className="new-story">
-			<div className="new-story__list">
-				<div className="new-story__item item-story">
-					<Title level="2" className="item-story__title">
-						Ask HN: The Arc Effect
-					</Title>
-					<div className="item-story__info">
-						<span>Source: wikipeda.com</span>
-						<span>Data: 12-12-2023</span>
-						<span>Count comment: 32</span>
-					</div>
-				</div>
-				<div className="new-story__item item-story">
-					<Title level="2" className="item-story__title">
-						Ask HN: The Arc Effect
-					</Title>
-					<div className="item-story__info">
-						<span>Source: wikipeda.com</span>
-						<span>Data: 12-12-2023</span>
-						<span>Count comment: 32</span>
-					</div>
+		<>
+			<Row>
+				<Col span={2} offset={22}>
+					<Refresh spin={spinRefresh} onClick={() => reloadDataList()} />
+				</Col>
+			</Row>
+			<div className="new-story">
+				<div className="new-story__list">
+					{Array.isArray(listNews) && listNews.length
+						? listNews.map((item) => {
+								const { title, date, descendants, id, by, score } = item;
+								return (
+									<NewStoryItem
+										key={id}
+										title={title}
+										date={date}
+										author={by}
+										countComment={descendants}
+										score={score}
+									/>
+								);
+						  })
+						: "Loading"}
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }

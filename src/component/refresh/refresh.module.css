@@ -1,0 +1,8 @@
+.refresh {
+	font-size: 25px;
+	transition: 1s;
+}
+.refresh::hover {
+	color: tomato;
+	background: red;
+}
