@@ -11,3 +11,15 @@ code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;
 }
+.content {
+	padding: 15px;
+	margin: 15px;
+}
+.title {
+	color: white;
+	font-size: 20px;
+}
+.item-story__info > span:not(:last-child)::after {
+	content: "|";
+	padding: 0px 15px;
+}
