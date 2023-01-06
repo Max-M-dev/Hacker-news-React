@@ -7,6 +7,7 @@ export default function NewStory(UIComponent, props) {
 
 	const loadListNews = useCallback(async () => {
 		setSpinRefresh(true);
+		setListNews(() => "loading");
 		server
 			.newStories()
 			.then((valuesList) => {

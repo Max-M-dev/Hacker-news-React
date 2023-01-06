@@ -27,8 +27,10 @@ export default function NewStoryUI(props) {
 								/>
 							);
 						})
-					) : (
+					) : listNews === "loading" ? (
 						<Skeleton active />
+					) : (
+						"Error"
 					)}
 				</div>
 			</div>
