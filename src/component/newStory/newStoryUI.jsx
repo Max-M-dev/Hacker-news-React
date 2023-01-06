@@ -18,6 +18,7 @@ export default function NewStoryUI(props) {
 								return (
 									<NewStoryItem
 										key={id}
+										idNews={id}
 										title={title}
 										date={date}
 										author={by}
