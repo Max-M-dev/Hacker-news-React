@@ -9,7 +9,7 @@ export default function NewStory(UIComponent, props) {
 		setSpinRefresh(true);
 		setListNews(() => "loading");
 		server
-			.newStories()
+			.newStories(20)
 			.then((valuesList) => {
 				setListNews(valuesList);
 				setSpinRefresh(false);

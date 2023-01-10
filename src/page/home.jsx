@@ -1,4 +1,4 @@
-import NewStory from "../component/newStory/";
+import NewStory from "../components/newStory/";
 export default function Home() {
 	return <NewStory />;
 }

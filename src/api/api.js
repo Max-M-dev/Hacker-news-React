@@ -7,6 +7,26 @@ export async function getItem(id) {
 	return response;
 }
 
+export async function getItems(ids) {
+	const promiseRequestListId = ids.map((id) => getItem(id));
+
+	const listPromiseFulfilled = await Promise.allSettled(promiseRequestListId)
+		.then((responseAll) =>
+			responseAll.filter((response) => response.status === "fulfilled")
+		)
+		.then((fulfilledList) =>
+			fulfilledList.map((response) => response.value.json())
+		);
+
+	const listValues = Promise.allSettled(listPromiseFulfilled).then((list) =>
+		list.map((data) => {
+			return data.value;
+		})
+	);
+	console.log(await listValues);
+	return listValues;
+}
+
 export async function getNewStoriesIds() {
 	return await request(`${linkWithVersion}newstories.json`);
 }
@@ -23,19 +43,10 @@ export async function getNewStories(limit = 5) {
 		listIdNewStories = listIdNewStories.slice(0, limit);
 	}
 
-	const promiseRequestListId = listIdNewStories.map((id) => getItem(id));
-
-	const listPromiseFulfilled = await Promise.allSettled(promiseRequestListId)
-		.then((responseAll) =>
-			responseAll.filter((response) => response.status === "fulfilled")
-		)
-		.then((fulfilledList) =>
-			fulfilledList.map((response) => response.value.json())
-		);
-	const listValuesNews = Promise.allSettled(listPromiseFulfilled).then((list) =>
+	const listValuesNews = getItems(listIdNewStories).then((list) =>
 		list.map((data) => {
-			data.value.date = timeConverter(data.value.time);
-			return data.value;
+			data.date = timeConverter(data.time);
+			return data;
 		})
 	);
 	return listValuesNews;

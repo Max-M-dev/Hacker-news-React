@@ -19,7 +19,7 @@ code {
 	color: white;
 	font-size: 20px;
 }
-.item-story__info > span:not(:last-child)::after {
+.info > span:not(:last-child)::after {
 	content: "|";
 	padding: 0px 15px;
 }

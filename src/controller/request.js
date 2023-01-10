@@ -1,5 +1,6 @@
-// import fetch from "node-fetch";
+import requestFetch from "../model/request/fetch";
+import cacheRequest from "../model/request/cache";
+
 export default async function request(url, params = {}) {
-	const res = await fetch(url, params);
-	return await res;
+	return await cacheRequest(url, params);
 }

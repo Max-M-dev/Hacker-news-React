@@ -1,1 +1,1 @@
-export { default } from "component/viewNews/";
+export { default } from "../components/viewNews/";
