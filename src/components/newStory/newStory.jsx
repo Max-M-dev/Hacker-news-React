@@ -1,9 +1,13 @@
 import { useState, useCallback, useEffect } from "react";
 import server from "../../controller/server";
+import {useDispatch} from "react-redux";
+import {update} from "../../store/news";
 
 export default function NewStory(UIComponent, props) {
 	const [listNews, setListNews] = useState(null);
 	const [spinRefresh, setSpinRefresh] = useState(false);
+  const dispatch = useDispatch();
+  dispatch(update());
 
 	const loadListNews = useCallback(async () => {
 		setSpinRefresh(true);
