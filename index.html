@@ -12,10 +12,35 @@
     <link rel="apple-touch-icon" href="./public/logo192.png" />
     <link rel="manifest" href="./public/manifest.json" />
     <title>React App</title>
+    <script>
+      window.addEventListener("error", (event) => {
+        const elError = document.getElementById("errorMessage");
+        elError.textContent = event.error.stack;
+      });
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="log"></div>
+    <div id="errorMessage"></div>
     <div id="root"></div>
+    <script>
+      (function () {
+        var old = console.log;
+        var logger = document.getElementById("log");
+        console.log = function (message) {
+          logger.innerHTML += `<hr>`;
+          if (typeof message == "object") {
+            logger.innerHTML += `<pre> ${
+              JSON && JSON.stringify ? JSON.stringify(message) : message
+            }
+              <pre />`;
+          } else {
+            logger.innerHTML += `<pre>${message} <pre/>`;
+          }
+        };
+      })();
+    </script>
     <script type="module" src="./src/index.jsx"></script>
   </body>
 </html>

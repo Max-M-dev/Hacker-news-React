@@ -15,7 +15,6 @@ export default function NewStory(UIComponent, props) {
 				setSpinRefresh(false);
 				return valuesList;
 			})
-			.then(console.log);
 	}, []);
 
 	useEffect(() => {
