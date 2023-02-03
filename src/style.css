@@ -23,3 +23,17 @@ code {
 	content: "|";
 	padding: 0px 15px;
 }
+
+.hide {
+	display: none;
+}
+.log-error {
+	color: tomato;
+}
+.log-warn {
+	color: rgb(189, 189, 10);
+}
+.text-success,
+.text-info {
+	color: rgb(2, 58, 2);
+}
