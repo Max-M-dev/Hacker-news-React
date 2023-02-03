@@ -23,8 +23,11 @@
 		"@types/react": "17.0.1",
 		"@types/react-dom": "17.0.1",
 		"@vitejs/plugin-react": "^3.0.0",
-		"eslint": "^8.31.0",
-		"eslint-plugin-react": "^7.32.0",
+		"babel-eslint": "^10.1.0",
+		"console-log-html": "^2.0.2",
+		"eslint": "^8.0.0",
+		"eslint-config-react-app": "^7.0.1",
+		"eslint-plugin-react": "^7.32.2",
 		"vite": "^4.0.0"
 	}
 }
